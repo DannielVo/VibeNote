@@ -1,15 +1,16 @@
 import React from "react";
 import "./profile.css";
 import { assets } from "../../assets/assets";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   return (
     <div className="profile-wrapper">
       {" "}
       <div className="profile-container">
-        <a href="Home_2.html" className="back-icon">
+        <Link className="back-icon" to={"/"}>
           &#8592;
-        </a>
+        </Link>
 
         <div className="avatar-wrapper">
           <div className="avatar-image">

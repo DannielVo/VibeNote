@@ -8,6 +8,7 @@ import PlainPage from "./pages/PlainPage";
 import NoteSettings from "./components/NoteSettings/NoteSettings";
 import ToolBarSection from "./pages/Home/ToolBarSection/ToolBarSection";
 import NoteSection from "./pages/Home/NoteSection/NoteSection";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
 const App = () => {
   const plainPages = [
@@ -22,6 +23,10 @@ const App = () => {
     {
       path: "/profile",
       component: <Profile></Profile>,
+    },
+    {
+      path: "/reset-password",
+      component: <ResetPassword></ResetPassword>,
     },
   ];
   return (

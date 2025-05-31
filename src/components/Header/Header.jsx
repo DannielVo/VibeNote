@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./header.css";
 import { assets } from "../../assets/assets";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const userIconRef = useRef(null);
   const profilePopupRef = useRef(null);
@@ -11,6 +13,8 @@ const Header = () => {
   const togglePopup = (e) => {
     e.preventDefault();
     setIsPopupVisible((prev) => !prev);
+    // let value = !isPopupVisible;
+    // setIsPopupVisible(value)
   };
 
   // Ẩn popup khi click ra ngoài
@@ -41,7 +45,7 @@ const Header = () => {
         {/* <!-- Desktop menu --> */}
         <div className="desktop-menu">
           <i className="bx bx-sun" id="theme-toggle" title="Toggle Theme"></i>
-          <a href="reset-password.html">
+          <a onClick={() => navigate("/reset-password")}>
             <i className="bx bx-lock" title="Password and Security"></i>
           </a>
           <a href="#">
@@ -61,7 +65,7 @@ const Header = () => {
               id="profile-popup"
               ref={profilePopupRef}
             >
-              <a href="Profile.html">My Profile</a>
+              <a onClick={() => navigate("/profile")}>My Profile</a>
               <a href="#" id="logout-btn">
                 Logout
               </a>
