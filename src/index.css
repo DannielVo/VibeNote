@@ -22,3 +22,23 @@
   --border-color: #ccc;
   --logo-filter: brightness(0) invert(0);
 }
+
+.darkmode {
+  --btn-color: #3498db;
+  --btn-hover: #2980b9;
+  --text-color: #fff;
+  --icon-hover: grey;
+  --icon-delete: red;
+  --label-bg: #999;
+  --border-noteCard: grey;
+  --secondary-dark: #525355;
+  --white-bg-color: #202124;
+  --tagArea-color: #202124;
+  --border-color: #ccc;
+  --logo-filter: brightness(0) invert(1);
+}
+
+body {
+  background-color: var(--white-bg-color);
+  color: var(--text-color);
+}
