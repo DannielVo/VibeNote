@@ -10,7 +10,7 @@ const ResetPassword = () => {
           &#8592;
         </Link>
 
-        <h1 className="resetPwd-title">Reset Password</h1>
+        <h1 className="resetPwd-title">Change Password</h1>
 
         <form>
           <div className="resetPwd-form-group">
@@ -38,9 +38,9 @@ const ResetPassword = () => {
             Update
           </button>
 
-          <div className="forgotPwd-link">
+          {/* <div className="forgotPwd-link">
             <a href="forgot-password.html">Forgot password?</a>
-          </div>
+          </div> */}
         </form>
       </div>
     </div>

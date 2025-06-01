@@ -9,6 +9,7 @@ import NoteSettings from "./components/NoteSettings/NoteSettings";
 import ToolBarSection from "./pages/Home/ToolBarSection/ToolBarSection";
 import NoteSection from "./pages/Home/NoteSection/NoteSection";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 
 const App = () => {
   const plainPages = [
@@ -27,6 +28,10 @@ const App = () => {
     {
       path: "/reset-password",
       component: <ResetPassword></ResetPassword>,
+    },
+    {
+      path: "/forgot-password",
+      component: <ForgotPassword></ForgotPassword>,
     },
   ];
   return (

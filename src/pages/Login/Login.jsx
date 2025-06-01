@@ -22,7 +22,11 @@ const Login = () => {
           </div>
 
           <div className="login-form-footer">
-            <button type="submit" className="forgot-password">
+            <button
+              onClick={() => navigate("/forgot-password")}
+              type="button"
+              className="forgot-password"
+            >
               Forgot password
             </button>
             <button type="submit" className="login-button">
