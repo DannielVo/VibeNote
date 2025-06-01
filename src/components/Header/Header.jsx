@@ -2,12 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import "./header.css";
 import { assets } from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
+import useMobileNav from "../../hooks/useMobileNav";
 
 const Header = () => {
   const navigate = useNavigate();
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const userIconRef = useRef(null);
   const profilePopupRef = useRef(null);
+  const { toggleMobileNav, isMobileNavOpen } = useMobileNav();
 
   // Toggle popup khi click vào user icon
   const togglePopup = (e) => {
@@ -41,7 +43,10 @@ const Header = () => {
       <header>
         <img src={assets.logo} className="logo" />
         <input type="text" placeholder="Search..." className="search-input" />
-        <i className="bx bx-menu menu-icon"></i>
+
+        {!isMobileNavOpen && (
+          <i className="bx bx-menu menu-icon" onClick={toggleMobileNav}></i>
+        )}
         {/* <!-- Desktop menu --> */}
         <div className="desktop-menu">
           <i className="bx bx-sun" id="theme-toggle" title="Toggle Theme"></i>
@@ -74,22 +79,26 @@ const Header = () => {
         </div>
       </header>
 
-      {/* <!-- Close mobile menu --> */}
-      <div className="close-icon">
-        <i className="bx bx-x"></i>
-      </div>
-
-      {/* <!-- Mobile Menu --> */}
-      <div id="mobile-menu" className="mobile-menu">
-        <div className="menu-content">
-          <a href="Profile.html">My Profile</a>
-          <a href="reset-password.html">Password and Security</a>
-          <hr />
-          <div className="toggle-theme">
-            <i className="bx bx-sun" id="theme-icon"></i>
+      {isMobileNavOpen && (
+        <>
+          {/* <!-- Close mobile menu --> */}
+          <div className="close-icon">
+            <i className="bx bx-x" onClick={() => toggleMobileNav()}></i>
           </div>
-        </div>
-      </div>
+
+          {/* <!-- Mobile Menu --> */}
+          <div id="mobile-menu" className="mobile-menu">
+            <div className="menu-content">
+              <a href="Profile.html">My Profile</a>
+              <a href="reset-password.html">Password and Security</a>
+              <hr />
+              <div className="toggle-theme">
+                <i className="bx bx-sun" id="theme-icon"></i>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };

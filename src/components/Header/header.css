@@ -75,7 +75,7 @@ header img {
 
 /* MOBILE MENU */
 .mobile-menu {
-  display: none;
+  display: flex;
   position: fixed;
   inset: 0;
   background-color: var(--icon-hover);
@@ -120,7 +120,6 @@ header img {
 }
 
 .close-icon {
-  display: none;
   position: fixed;
   top: 20px;
   right: 20px;
