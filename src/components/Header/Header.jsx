@@ -3,6 +3,7 @@ import "./header.css";
 import { assets } from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
 import useMobileNav from "../../hooks/useMobileNav";
+import useDarkMode from "../../hooks/useDarkMode";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ const Header = () => {
   const userIconRef = useRef(null);
   const profilePopupRef = useRef(null);
   const { toggleMobileNav, isMobileNavOpen } = useMobileNav();
+  const { themeIconMobile, themeToggleDesktop, toggleTheme } = useDarkMode();
 
   // Toggle popup khi click vào user icon
   const togglePopup = (e) => {
@@ -49,7 +51,13 @@ const Header = () => {
         )}
         {/* <!-- Desktop menu --> */}
         <div className="desktop-menu">
-          <i className="bx bx-sun" id="theme-toggle" title="Toggle Theme"></i>
+          <i
+            className="bx bx-moon"
+            id="theme-desktop-icon"
+            title="Toggle Theme"
+            ref={themeToggleDesktop}
+            onClick={toggleTheme}
+          ></i>
           <a onClick={() => navigate("/reset-password")}>
             <i className="bx bx-lock" title="Password and Security"></i>
           </a>
@@ -93,7 +101,12 @@ const Header = () => {
               <a href="reset-password.html">Password and Security</a>
               <hr />
               <div className="toggle-theme">
-                <i className="bx bx-sun" id="theme-icon"></i>
+                <i
+                  className="bx bx-moon"
+                  id="theme-mobile-icon"
+                  ref={themeIconMobile}
+                  onClick={toggleTheme}
+                ></i>
               </div>
             </div>
           </div>
