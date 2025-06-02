@@ -1,0 +1,206 @@
+/* TOOLBAR */
+.toolbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.toolbar i {
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  color: var(--text-color);
+  transition: background-color 0.2s;
+}
+
+.toolbar i:hover {
+  background-color: var(--icon-hover);
+}
+
+.sort-dropdown select {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--white-bg-color);
+}
+
+/* FILTER-NOTE */
+.filter-note-bar {
+  right: 50%;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.filter-note-bar select {
+  padding: 12px 32px 12px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  color: var(--text-color);
+  background-color: var(--white-bg-color);
+  border: 1px solid lightgray;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  width: 146px;
+
+  /* Caret Customize */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23333' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px;
+  appearance: none;
+}
+
+.filter-note-bar label {
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+/* TAG AREA */
+.tag-area {
+  /* display: flex; */
+  margin: 20px 16px;
+  padding: 10px;
+  background-color: var(--tagArea-color);
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  max-height: 250px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.tag-input-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.tag-input-bar input {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  outline: none;
+}
+
+.tag-input-bar i {
+  font-size: 18px;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.tag-input-bar i:hover {
+  background-color: var(--icon-hover);
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-list .tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--icon-hover);
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.5s;
+}
+
+.tag-list .tag:hover {
+  background-color: var(--btn-color);
+}
+
+.tag-list .tag i {
+  display: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: #333;
+  padding: 2px;
+  border-radius: 50%;
+  transition: background-color 0.5s;
+}
+
+.tag-list .tag:hover i {
+  display: inline;
+  transition: all ease 0.5s;
+}
+
+.tag-list .tag i:hover {
+  background-color: var(--border-color);
+}
+
+/* DISPLAY TAGS */
+.display-tags {
+  text-align: center;
+  padding: 8px 12px;
+  margin: 0 16px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-color);
+  background-color: var(--white-bg-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  border-left: 5px solid var(--btn-color);
+  border-right: 5px solid var(--btn-color);
+  max-height: 250px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* RESPONSIVE */
+
+/* TABLET */
+@media (min-width: 768px) {
+  .toolbar {
+    justify-content: center;
+    gap: 20px;
+    max-width: 800px;
+    margin: 10px auto;
+    padding: 0 10px;
+  }
+
+  .toolbar i,
+  .note-icons i {
+    font-size: 20px;
+  }
+
+  .display-tags {
+    margin: 0 50px;
+    margin-bottom: 10px;
+  }
+
+  .tag-area {
+    margin: 20px 50px;
+    padding: 10px;
+  }
+}
+
+/* DESKTOP: lg */
+@media (min-width: 1024px) {
+  .display-tags {
+    margin: 0 auto;
+    margin-bottom: 10px;
+    max-width: 600px;
+  }
+
+  .tag-area {
+    margin: 20px auto;
+    padding: 10px;
+    max-width: 600px;
+  }
+}
