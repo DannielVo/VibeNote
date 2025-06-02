@@ -1,0 +1,36 @@
+.note-section {
+  margin-bottom: 20px;
+  padding: 0 16px;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 4px;
+}
+
+.note-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* RESPONSIVE */
+
+/* TABLET */
+@media (min-width: 768px) {
+  .note-section {
+    padding: 0 50px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+}
+
+/* DESKTOP: lg */
+@media (min-width: 1024px) {
+  .note-section {
+    padding: 0 200px;
+  }
+}
