@@ -43,10 +43,10 @@ const ToolBarSection = () => {
       {isTagAreaOpen && (
         <div className="tag-area">
           <div className="tag-input-bar">
-            <input type="text" placeholder="Search/edit/add tag..." />
+            <input type="text" placeholder="Search/add tag..." />
             <i className="bx bx-search"></i>
             <i className="bx bx-plus"></i>
-            <i className="bx bx-check-square"></i>
+            {/* <i className="bx bx-check-square"></i> */}
           </div>
           <div className="tag-list">
             <div className="tag">
