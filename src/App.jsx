@@ -3,7 +3,7 @@ import Profile from "./pages/Profile/Profile";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/Home/HomePage";
 import PlainPage from "./pages/PlainPage";
 import NoteSettings from "./components/NoteSettings/NoteSettings";
 import ToolBarSection from "./pages/Home/ToolBarSection/ToolBarSection";
@@ -36,18 +36,7 @@ const App = () => {
   ];
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <HomePage>
-            <NoteSettings></NoteSettings>
-            <ToolBarSection></ToolBarSection>
-            <NoteSection title={"Pinned"}></NoteSection>
-            <NoteSection title={"Others"}></NoteSection>
-            <NoteSection title={"Share to you"}></NoteSection>
-          </HomePage>
-        }
-      ></Route>
+      <Route path="/" element={<HomePage></HomePage>}></Route>
       {plainPages.map(({ path, component }) => (
         <Route
           key={path}

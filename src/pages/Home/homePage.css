@@ -1,0 +1,50 @@
+/* ACTIVATE NOTIFICATION */
+.popup-warning {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 5px 12px;
+  margin: 0 16px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--tagArea-color);
+  background-color: rgba(255, 0, 0, 0.7);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.popup-warning a {
+  color: var(--tagArea-color);
+  font-weight: bold;
+  text-decoration: underline;
+  margin-top: 10px;
+}
+
+/* RESPONSIVE */
+
+/* TABLET */
+@media (min-width: 768px) {
+  .popup-warning {
+    left: auto;
+    right: 20px;
+    bottom: 20px;
+    width: auto;
+    max-width: 300px;
+    padding: 12px 16px;
+    margin: 0;
+    border-radius: 8px;
+    border: 1px solid #ffeeba;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* DESKTOP: lg */
+@media (min-width: 1024px) {
+  .popup-warning {
+    right: 20px;
+    bottom: 20px;
+  }
+}
