@@ -2,11 +2,24 @@ import React, { useState } from "react";
 import "./toolBarSection.css";
 import { useNote } from "../../../context/NoteContext";
 import DeleteConfirmModal from "../../../components/DeleteConfirmModal/DeleteConfirmModal";
+import EditTagModal from "../../../components/EditTagModal/EditTagModal";
+import { TAGS } from "../../../assets/assets";
 
 const ToolBarSection = () => {
   const { toggleGridListView, isGridView } = useNote();
   const [isTagAreaOpen, setIsTagAreaOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isEditTagModalOpen, setIsEditTagModalOpen] = useState(false);
+  const [selectedTag, setSelectedTag] = useState({});
+
+  const openEditModal = (selectedItem) => {
+    setSelectedTag(selectedItem);
+    setIsEditTagModalOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setIsEditTagModalOpen(false);
+  };
 
   const openDeleteModal = () => {
     setIsDeleteModalOpen(true);
@@ -59,49 +72,34 @@ const ToolBarSection = () => {
             {/* <i className="bx bx-check-square"></i> */}
           </div>
           <div className="tag-list">
-            <div className="tag">
-              <i
-                className="bx bx-x deleteTag-icon"
-                onClick={openDeleteModal}
-              ></i>
-              <span>Work</span>
-              <i className="bx bx-edit editTag-icon"></i>
-            </div>
-            <div className="tag">
-              <i
-                className="bx bx-x deleteTag-icon"
-                onClick={openDeleteModal}
-              ></i>
-              <span>Personal</span>
-              <i
-                className="bx bx-edit editTag-icon"
-                onClick={openDeleteModal}
-              ></i>
-            </div>
-            <div className="tag">
-              <i
-                className="bx bx-x deleteTag-icon"
-                onClick={openDeleteModal}
-              ></i>
-              <span>Ideas</span>
-              <i className="bx bx-edit editTag-icon"></i>
-            </div>
-            <div className="tag">
-              <i
-                className="bx bx-x deleteTag-icon"
-                onClick={openDeleteModal}
-              ></i>
-              <span>Project</span>
-              <i className="bx bx-edit editTag-icon"></i>
-            </div>
+            {TAGS.map((item, index) => (
+              <div className="tag" key={`tagItem ${index}`}>
+                <i
+                  className="bx bx-x deleteTag-icon"
+                  onClick={openDeleteModal}
+                ></i>
+                <span>{item.tagName}</span>
+                <i
+                  className="bx bx-edit editTag-icon"
+                  onClick={() => openEditModal(item)}
+                ></i>
+              </div>
+            ))}
           </div>
         </div>
       )}
+
       <DeleteConfirmModal
         isOpen={isDeleteModalOpen}
         onClose={closeDeleteModal}
         itemName={"tag"}
       ></DeleteConfirmModal>
+
+      <EditTagModal
+        isOpen={isEditTagModalOpen}
+        onClose={closeEditModal}
+        tagItem={selectedTag}
+      ></EditTagModal>
 
       {/* <!-- Row 5: DISPLAY TAGS --> */}
       <div className="display-tags">
