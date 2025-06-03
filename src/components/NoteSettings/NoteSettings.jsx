@@ -25,6 +25,9 @@ const NoteSettings = () => {
 
   const toggleExpandedNote = (e) => {
     e.preventDefault();
+    setIsColorPanelOpen(false);
+    setIsFontSizePanelOpen(false);
+    setIsAddTagPanelOpen(false);
     setIsExpandedNoteOpen((prev) => !prev);
   };
 
@@ -38,20 +41,18 @@ const NoteSettings = () => {
     const handleClickOutside = (e) => {
       if (
         isExpandedNoteOpen &&
-        noteContainerRef.current &&
         expandedNoteRef.current &&
-        !noteContainerRef.current.contains(e.target) &&
         !expandedNoteRef.current.contains(e.target)
       ) {
         setIsExpandedNoteOpen(false);
       }
     };
 
-    document.addEventListener("click", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [isExpandedNoteOpen]);
 
   return (
     <>
@@ -60,7 +61,7 @@ const NoteSettings = () => {
           <div
             className="add-note-bar"
             id="collapsedNote"
-            onClick={(e) => toggleExpandedNote(e)}
+            onClick={toggleExpandedNote}
           >
             <input type="text" placeholder="Add note..." readOnly />
           </div>
@@ -161,10 +162,7 @@ const NoteSettings = () => {
               ></i>
               <i className="bx bx-user-plus" title="Share note"></i>
               <i className="bx bx-lock" title="Lock note"></i>
-              <button
-                className="close-btn"
-                onClick={(e) => toggleExpandedNote(e)}
-              >
+              <button className="close-btn" onClick={toggleExpandedNote}>
                 Close
               </button>
             </div>
