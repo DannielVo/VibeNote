@@ -42,9 +42,9 @@ const App = () => {
           <HomePage>
             <NoteSettings></NoteSettings>
             <ToolBarSection></ToolBarSection>
-            <NoteSection></NoteSection>
-            <NoteSection></NoteSection>
-            <NoteSection></NoteSection>
+            <NoteSection title={"Pinned"}></NoteSection>
+            <NoteSection title={"Others"}></NoteSection>
+            <NoteSection title={"Share to you"}></NoteSection>
           </HomePage>
         }
       ></Route>

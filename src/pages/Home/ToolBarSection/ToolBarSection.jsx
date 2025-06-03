@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import "./toolBarSection.css";
+import { useNote } from "../../../context/NoteContext";
 
 const ToolBarSection = () => {
-  const [isGridView, setIsGridView] = useState(true);
+  const { toggleGridListView, isGridView } = useNote();
   const [isTagAreaOpen, setIsTagAreaOpen] = useState(false);
-
-  const toggleGridListView = () => {
-    setIsGridView((prev) => !prev);
-  };
 
   const toggleTagArea = () => {
     setIsTagAreaOpen((prev) => !prev);
