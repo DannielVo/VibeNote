@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import "./noteItem.css";
+import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
 
 const NoteItem = () => {
   const [isLocked, setIsLocked] = useState(false);
   const [isNoteMenuOpen, setIsNoteMenuOpen] = useState(false);
   const [isLockedIconOpen, setIsLockedIconOpen] = useState(true);
   const [isPinnedIconOpen, setIsPinnedIconOpen] = useState(true);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  const openDeleteModal = () => {
+    setIsDeleteModalOpen(true);
+  };
+
+  const closeDeleteModal = () => {
+    setIsDeleteModalOpen(false);
+  };
 
   const togglePinnedIcon = () => {
     setIsPinnedIconOpen((prev) => !prev);
@@ -92,12 +102,20 @@ const NoteItem = () => {
               </>
             )}
 
-            <div className="menu-item deleteNote-icon">
+            <div
+              className="menu-item deleteNote-icon"
+              onClick={openDeleteModal}
+            >
               <i className="bx bx-trash"></i> Delete
             </div>
           </div>
         )}
       </div>
+      <DeleteConfirmModal
+        isOpen={isDeleteModalOpen}
+        onClose={closeDeleteModal}
+        itemName={"note"}
+      ></DeleteConfirmModal>
     </>
   );
 };

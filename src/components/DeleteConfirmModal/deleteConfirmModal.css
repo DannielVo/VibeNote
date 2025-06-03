@@ -1,0 +1,59 @@
+/* DELTE NOTE CONFIRMATION */
+.deleteNote-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 6px 0;
+  background-color: var(--white-bg-color);
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 160px;
+}
+
+/* .deleteNote-hidden {
+  display: none;
+} */
+
+.deleteNote-popup-box {
+  background-color: var(--white-bg-color);
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.deleteNote-popup-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.deleteNote-popup-buttons button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.deleteNote-popup-buttons button:hover {
+  opacity: 0.9;
+}
+
+#cancel-delete-note {
+  background-color: #ccc;
+  color: #333;
+}
+
+#confirm-delete-note.danger {
+  background-color: #e74c3c;
+  color: #fff;
+}

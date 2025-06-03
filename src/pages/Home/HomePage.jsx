@@ -22,7 +22,7 @@ const HomePage = () => {
       </main>
 
       {/* <!-- ACTIVATE NOTIFICATION --> */}
-      <div id="verification-popup" class="popup-warning">
+      <div id="verification-popup" className="popup-warning">
         <p>Your account is unverified!</p>
         <a href="#" id="verify-link">
           Verify now
