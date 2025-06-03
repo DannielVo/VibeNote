@@ -1,13 +1,25 @@
 import React, { useState } from "react";
 import "./noteItem.css";
 import DeleteConfirmModal from "../DeleteConfirmModal/DeleteConfirmModal";
+import NotePasswordModal from "../NotePasswordModal/NotePasswordModal";
 
-const NoteItem = () => {
+const NoteItem = ({ noteItem }) => {
   const [isLocked, setIsLocked] = useState(false);
   const [isNoteMenuOpen, setIsNoteMenuOpen] = useState(false);
   const [isLockedIconOpen, setIsLockedIconOpen] = useState(true);
   const [isPinnedIconOpen, setIsPinnedIconOpen] = useState(true);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
+  const [selectedPassAction, setSelectedPassAction] = useState("");
+
+  const openPasswordModal = (action) => {
+    setSelectedPassAction(action);
+    setIsPasswordModalOpen(true);
+  };
+
+  const closePasswordModal = () => {
+    setIsPasswordModalOpen(false);
+  };
 
   const openDeleteModal = () => {
     setIsDeleteModalOpen(true);
@@ -52,13 +64,13 @@ const NoteItem = () => {
           </>
         ) : (
           <>
-            <h3 className="note-card-title">Monday</h3>
+            <h3 className="note-card-title">{noteItem.noteTitle}</h3>
             <div className="note-labels">
               <span className="note-card-labels">Work</span>
               <span className="note-card-labels">Project</span>
               <span className="note-card-labels">Ideas</span>
             </div>
-            <p className="note-card-content">Hello world!</p>
+            <p className="note-card-content">{noteItem.noteContent}</p>
             <div className="note-options">
               <i
                 className="bx bx-dots-vertical-rounded"
@@ -88,15 +100,33 @@ const NoteItem = () => {
               <i className="bx bx-share"></i> Share
             </div>
             {isLockedIconOpen ? (
-              <div className="menu-item" onClick={toggleLockedIcon}>
+              <div
+                className="menu-item"
+                onClick={() => {
+                  toggleLockedIcon();
+                  openPasswordModal("set");
+                }}
+              >
                 <i className="bx bx-lock"></i> Lock
               </div>
             ) : (
               <>
-                <div className="menu-item" onClick={toggleLockedIcon}>
+                <div
+                  className="menu-item"
+                  onClick={() => {
+                    toggleLockedIcon();
+                    openPasswordModal("enter");
+                  }}
+                >
                   <i className="bx bx-lock-open-alt"></i> Unlock
                 </div>
-                <div className="menu-item">
+                <div
+                  className="menu-item"
+                  onClick={() => {
+                    toggleLockedIcon();
+                    openPasswordModal("change");
+                  }}
+                >
                   <i className="bx bx-key"></i> Change password
                 </div>
               </>
@@ -111,11 +141,19 @@ const NoteItem = () => {
           </div>
         )}
       </div>
+
       <DeleteConfirmModal
         isOpen={isDeleteModalOpen}
         onClose={closeDeleteModal}
         itemName={"note"}
       ></DeleteConfirmModal>
+
+      <NotePasswordModal
+        isOpen={isPasswordModalOpen}
+        onClose={closePasswordModal}
+        noteItem={{}}
+        action={selectedPassAction}
+      ></NotePasswordModal>
     </>
   );
 };

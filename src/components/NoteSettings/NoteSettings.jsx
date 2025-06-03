@@ -128,7 +128,7 @@ const NoteSettings = () => {
                       className="tag-item"
                       data-tag="Work"
                     >
-                      {item.tagName}
+                      {item.labelName}
                     </div>
                   ))}
                 </div>

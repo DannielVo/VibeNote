@@ -78,7 +78,7 @@ const ToolBarSection = () => {
                   className="bx bx-x deleteTag-icon"
                   onClick={openDeleteModal}
                 ></i>
-                <span>{item.tagName}</span>
+                <span>{item.labelName}</span>
                 <i
                   className="bx bx-edit editTag-icon"
                   onClick={() => openEditModal(item)}
