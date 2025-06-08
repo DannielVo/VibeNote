@@ -66,7 +66,7 @@ const NoteSection = ({ title, type }) => {
 
       setFilteredNotes(result);
       setIsLoadingData(false);
-    }, 300); // delay nhỏ để user thấy loading, tùy chỉnh nếu muốn
+    }, 1000); // delay nhỏ để user thấy loading, tùy chỉnh nếu muốn
 
     return () => clearTimeout(timer); // clear nếu dependencies thay đổi nhanh
   }, [notes, noteSearchTerm, type, isSortingLastModified, labelFilterTerms]);

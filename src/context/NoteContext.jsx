@@ -138,6 +138,21 @@ export function NoteContextProvider({ children }) {
   };
 
   // useEffect
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    const storedUserId = localStorage.getItem("user");
+
+    if (storedToken && storedUserId) {
+      setToken(storedToken);
+      setUserId(storedUserId);
+    } else {
+      setToken(null);
+      setUserId(null);
+      setNotes([]);
+    }
+  }, []);
+
   useEffect(() => {
     if (token && userId) {
       fetchLabels();
