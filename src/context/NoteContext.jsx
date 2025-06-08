@@ -26,6 +26,8 @@ export function NoteContextProvider({ children }) {
 
       localStorage.setItem("token", response.data.access_token);
       localStorage.setItem("user", response.data.user.id);
+      setToken(response.data.access_token);
+      setUserId(response.data.user.id);
     } else {
       setIsLoggedIn(true);
       setToken(tokenData);
@@ -37,6 +39,8 @@ export function NoteContextProvider({ children }) {
     setIsLoggedIn(false);
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    setToken(null);
+    setUserId(null);
   };
 
   // Note Actions
@@ -135,18 +139,13 @@ export function NoteContextProvider({ children }) {
 
   // useEffect
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      setToken(storedToken);
+    if (token && userId) {
       fetchLabels();
       fetchNotes();
+    } else {
+      setNotes([]);
     }
-
-    const storedUserId = localStorage.getItem("user");
-    if (storedUserId) {
-      setUserId(storedUserId);
-    }
-  }, []);
+  }, [token, userId]);
 
   const value = {
     toggleGridListView,
