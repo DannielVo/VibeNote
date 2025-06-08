@@ -143,6 +143,32 @@
   background-color: var(--border-color);
 }
 
+.tag-list .tag.selected {
+  background-color: var(--btn-color);
+}
+
+.tag-list .tag.selected i {
+  display: inline;
+}
+
+.spinner {
+  width: 1.5em;
+  height: 1.5em;
+  border: 0.2em solid #f3f3f3;
+  border-top: 0.2em solid var(--btn-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* DISPLAY TAGS */
 .display-tags {
   text-align: center;

@@ -4,6 +4,7 @@ import Header from "../../components/Header/Header";
 import NoteSettings from "../../components/NoteSettings/NoteSettings";
 import ToolBarSection from "./ToolBarSection/ToolBarSection";
 import NoteSection from "./NoteSection/NoteSection";
+import API from "../../hooks/api";
 
 const HomePage = () => {
   useEffect(() => {
@@ -16,9 +17,9 @@ const HomePage = () => {
       <main>
         <NoteSettings></NoteSettings>
         <ToolBarSection></ToolBarSection>
-        <NoteSection title={"Pinned"}></NoteSection>
-        <NoteSection title={"Others"}></NoteSection>
-        <NoteSection title={"Share to you"}></NoteSection>
+        <NoteSection title={"Pinned"} type={"pin"}></NoteSection>
+        <NoteSection title={"Others"} type={"others"}></NoteSection>
+        <NoteSection title={"Share to you"} type={"share"}></NoteSection>
       </main>
 
       {/* <!-- ACTIVATE NOTIFICATION --> */}

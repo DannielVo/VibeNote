@@ -4,14 +4,18 @@ import { assets } from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
 import useMobileNav from "../../hooks/useMobileNav";
 import useDarkMode from "../../hooks/useDarkMode";
+import API from "../../hooks/api";
+import { useNote } from "../../context/NoteContext";
 
 const Header = () => {
   const navigate = useNavigate();
+  const { logout, noteSearchTerm, setNoteSearchTerm } = useNote();
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const userIconRef = useRef(null);
   const profilePopupRef = useRef(null);
   const { toggleMobileNav, isMobileNavOpen } = useMobileNav();
   const { themeIconMobile, themeToggleDesktop, toggleTheme } = useDarkMode();
+  const [loadingLogout, setLoadingLogout] = useState(false);
 
   // Toggle popup khi click vào user icon
   const togglePopup = (e) => {
@@ -19,6 +23,20 @@ const Header = () => {
     setIsPopupVisible((prev) => !prev);
     // let value = !isPopupVisible;
     // setIsPopupVisible(value)
+  };
+
+  const handleLogout = async () => {
+    try {
+      setLoadingLogout(true);
+      await API.post("/logout");
+      logout();
+      // alert("Đã đăng xuất");
+      setLoadingLogout(false);
+      navigate("/login");
+    } catch (error) {
+      setLoadingLogout(false);
+      alert("Logout lỗi", error);
+    }
   };
 
   // Ẩn popup khi click ra ngoài
@@ -44,7 +62,13 @@ const Header = () => {
     <>
       <header>
         <img src={assets.logo} className="logo" />
-        <input type="text" placeholder="Search..." className="search-input" />
+        <input
+          type="text"
+          placeholder="Search..."
+          className="search-input"
+          value={noteSearchTerm}
+          onChange={(e) => setNoteSearchTerm(e.target.value)}
+        />
 
         {!isMobileNavOpen && (
           <i className="bx bx-menu menu-icon" onClick={toggleMobileNav}></i>
@@ -79,8 +103,8 @@ const Header = () => {
               ref={profilePopupRef}
             >
               <a onClick={() => navigate("/profile")}>My Profile</a>
-              <a href="#" id="logout-btn">
-                Logout
+              <a href="#" id="logout-btn" onClick={handleLogout}>
+                {loadingLogout ? "Logout..." : "Logout"}
               </a>
             </div>
           )}
@@ -97,8 +121,13 @@ const Header = () => {
           {/* <!-- Mobile Menu --> */}
           <div id="mobile-menu" className="mobile-menu">
             <div className="menu-content">
-              <a href="Profile.html">My Profile</a>
-              <a href="reset-password.html">Password and Security</a>
+              <a onClick={() => navigate("/profile")}>My Profile</a>
+              <a onClick={() => navigate("/reset-password")}>
+                Password and Security
+              </a>
+              <a onClick={handleLogout}>
+                {loadingLogout ? "Logout..." : "Logout"}
+              </a>
               <hr />
               <div className="toggle-theme">
                 <i

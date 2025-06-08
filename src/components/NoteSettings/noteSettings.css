@@ -83,8 +83,13 @@
   background-color: var(--icon-hover);
 }
 
+.note-actions {
+  display: flex;
+  gap: 10px;
+}
+
 .close-btn {
-  margin-left: auto;
+  /* margin-left: auto; */
   background: none;
   border: none;
   cursor: pointer;
@@ -97,8 +102,22 @@
   background-color: var(--icon-hover);
 }
 
+.submit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--btn-color);
+  padding: 5px;
+}
+
+.submit-btn:hover {
+  background-color: var(--icon-hover);
+}
+
 /* CHANGE COLOR FOR ICON PIN NOTES */
-.addPinIcon.pinned {
+.addPinIcon.pinned,
+.addLockIcon.locked {
   color: orange;
 }
 
@@ -225,6 +244,24 @@
 
 .size-option:hover {
   background-color: var(--icon-hover);
+}
+
+.spinner {
+  width: 1.5em;
+  height: 1.5em;
+  border: 0.2em solid #f3f3f3;
+  border-top: 0.2em solid var(--btn-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* RESPONSIVE */

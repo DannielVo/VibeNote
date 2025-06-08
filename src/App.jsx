@@ -10,6 +10,7 @@ import ToolBarSection from "./pages/Home/ToolBarSection/ToolBarSection";
 import NoteSection from "./pages/Home/NoteSection/NoteSection";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import PrivateRoute from "./pages/PrivateRoute";
 
 const App = () => {
   const plainPages = [
@@ -23,11 +24,19 @@ const App = () => {
     },
     {
       path: "/profile",
-      component: <Profile></Profile>,
+      component: (
+        <PrivateRoute>
+          <Profile></Profile>
+        </PrivateRoute>
+      ),
     },
     {
       path: "/reset-password",
-      component: <ResetPassword></ResetPassword>,
+      component: (
+        <PrivateRoute>
+          <ResetPassword></ResetPassword>
+        </PrivateRoute>
+      ),
     },
     {
       path: "/forgot-password",
@@ -36,7 +45,14 @@ const App = () => {
   ];
   return (
     <Routes>
-      <Route path="/" element={<HomePage></HomePage>}></Route>
+      <Route
+        path="/"
+        element={
+          <PrivateRoute>
+            <HomePage></HomePage>
+          </PrivateRoute>
+        }
+      ></Route>
       {plainPages.map(({ path, component }) => (
         <Route
           key={path}

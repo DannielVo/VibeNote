@@ -52,6 +52,25 @@ export const COLOR = [
   },
 ];
 
+export const FONT_SIZE = [
+  {
+    name: "Small",
+    value: "14px",
+  },
+  {
+    name: "Medium",
+    value: "16px",
+  },
+  {
+    name: "Large",
+    value: "18px",
+  },
+  {
+    name: "Extra",
+    value: "20px",
+  },
+];
+
 export const TAGS = [
   {
     labelId: 0,
